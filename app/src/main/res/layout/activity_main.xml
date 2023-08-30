@@ -58,6 +58,7 @@
                 android:layout_marginTop="30dp"
                 android:text="Age :"
                 android:textSize="18dp"
+                android:textColor="@color/white"
                 android:textStyle="bold" />
 
             <EditText
@@ -79,6 +80,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="Height :"
                 android:textStyle="bold"
+                android:textColor="@color/white"
                 android:textSize="18dp" />
 
             <EditText
@@ -99,6 +101,7 @@
                 android:layout_marginTop="65dp"
                 android:layout_marginLeft="10dp"
                 android:text="Weight :"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="18dp"/>
 
@@ -120,6 +123,7 @@
                 android:layout_marginTop="65dp"
                 android:layout_marginLeft="10dp"
                 android:text="Gender :"
+                android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
 
