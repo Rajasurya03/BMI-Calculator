@@ -18,6 +18,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var radioButton: RadioButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
+//For  Remove Title Bar From the Activity
+        getSupportActionBar()?.hide()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         etAge=findViewById(R.id.etAge)

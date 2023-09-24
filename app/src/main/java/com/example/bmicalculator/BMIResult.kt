@@ -14,6 +14,7 @@ class BMIResult : AppCompatActivity() {
     private lateinit var tvBmi: TextView
     private lateinit var tvBodyFat: TextView
     private lateinit var tvBmiCategory: TextView
+    private lateinit var tvNormalBMI: TextView
     private lateinit var bntBack: Button
 
     var bmi=0.0
@@ -24,14 +25,18 @@ class BMIResult : AppCompatActivity() {
     var height=1.0
     var weight=1.0
     override fun onCreate(savedInstanceState: Bundle?) {
+//For  Remove Title Bar From the Activity
+        getSupportActionBar()?.hide()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bmiresult)
 
         tvBmi=findViewById(R.id.tvBmi)
         tvBodyFat=findViewById(R.id.tvBodyFat)
         tvBmiCategory=findViewById(R.id.tvBmiCategory)
+        tvNormalBMI=findViewById(R.id.tvNormalBMI)
 
-        Toast.makeText(applicationContext,"Hiii, This is BMI Result", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(applicationContext,"Hiii, This is BMI Result", Toast.LENGTH_SHORT).show()
         val bundle = intent.extras
         if (bundle != null){
             val ageTemp = bundle.getString("age")
@@ -46,8 +51,8 @@ class BMIResult : AppCompatActivity() {
         }
         bmi=(weight/ Math.pow((height / 100), 2.0))
         bodyFat=(1.20*bmi)+(0.23*age)-5.4
-        if(age>=20)
-            bmiCategory=when(bmi){
+        if(age>=20) {
+            bmiCategory = when (bmi) {
                 in 0.0..16.0 -> "Severe Thinness"
                 in 16.0..18.0 -> "Moderate Thinness"
                 in 18.0..18.5 -> "Mild Thinness"
@@ -57,13 +62,17 @@ class BMIResult : AppCompatActivity() {
                 in 35.0..40.0 -> "Obese Class II"
                 else -> "Obese Class III"
             }
-        else
-            bmiCategory=when(bodyFat){
+            tvNormalBMI.text="18.5  <=  25.0"
+        }
+        else {
+            bmiCategory = when (bodyFat) {
                 in 0.0..5.0 -> "Underweight"
                 in 5.0..85.0 -> "Healthy weight"
                 in 85.0..95.0 -> "At risk of overweight"
                 else -> "Overweight"
             }
+            tvNormalBMI.text="5.0  <=  85.0"
+        }
         tvBmi.text="%.2f".format(bmi)
         tvBodyFat.text="%.2f".format(bodyFat)+"%"
         tvBmiCategory.text=bmiCategory
